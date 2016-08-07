@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('donor');
 });
+Route::get('donor', 'DonorController@read');
+Route::get('donor/list','DonorController@list');
