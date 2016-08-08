@@ -8,6 +8,8 @@
     {{ Html::style(asset('css/bootstrap.min.css')) }}
     {{ Html::script(asset('js/jquery-2.2.3.min.js')) }}
     {{ Html::script(asset('js/bootstrap.min.js')) }}
+    {{ Html::style(asset('js/jquery-ui-1.12.0.custom/jquery-ui.min.css')) }}
+    {{ Html::script(asset('js/jquery-ui-1.12.0.custom/jquery-ui.min.js')) }}
 	<style>
 	.loading {
 		background: lightgoldenrodyellow url('{{asset('images/processing.gif')}}') no-repeat center 65%;
@@ -26,6 +28,7 @@
 <body>
 	<header>@include('layouts.header')</header>
     <div class="content" style="min-height:525px;">@yield('content')</div>
+    <div class="loading"></div>
     <footer>@include('layouts.footer')</footer>
 </body>
 <script>
