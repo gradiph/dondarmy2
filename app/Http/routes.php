@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 Route::get('donor', 'DonorController@read');
 Route::get('donor/list','DonorController@list');
-Route::get('donor/dialog/tambah','DonorController@dialogTambah');
-Route::get('donor/dialog/ubah/{id}','DonorController@dialogUbah');
-Route::get('donor/dialog/hapus/{id}','DonorController@dialogHapus');
+
+Route::get('golDarah/listSelect','GolDarahController@listSelect');
+
+Route::get('pekerjaan/listSelect','PekerjaanController@listSelect');

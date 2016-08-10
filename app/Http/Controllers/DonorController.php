@@ -25,25 +25,11 @@ class DonorController extends Controller
             ->where('gol_darah_id', 'like', '%' . Session::get('donor_search-gol') . '%')
             ->orderBy(Session::get('donor_field'), Session::get('donor_sort'))
             ->paginate(6);
-        $total = Donor::count();
+        $total = Donor::where('nama', 'like', '%' . Session::get('donor_search') . '%')
+            ->where('gol_darah_id', 'like', '%' . Session::get('donor_search-gol') . '%')
+            ->count();
         return view('donor.list')
             ->with('donors',$donors)
             ->with('total',$total);
-    }
-    public function dialogTambah()
-    {
-        return view('donor.dialog_tambah');
-    }
-    public function dialogUbah($id)
-    {
-        $donor = Donor::find($id);
-        return view('donor.dialog_ubah')
-            ->with('donor',$donor);
-    }
-    public function dialogHapus($id)
-    {
-        $donor = Donor::find($id);
-        return view('donor.dialog_ubah')
-            ->with('donor',$donor);
     }
 }
