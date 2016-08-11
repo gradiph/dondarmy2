@@ -63,13 +63,13 @@
                     <div class="form-group">
                         {{ Form::label('no_register','No. Register',['class'=>'col-sm-4 control-label']) }}
                         <div class="col-sm-8">
-                            {{ Form::text('no_register',old('no_register'),['class'=>'form-control','placeholder'=>'Masukkan No. Register']) }}
+                            {{ Form::text('no_register',old('no_register'),['class'=>'form-control','placeholder'=>'Masukkan No. Register','required']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('nama','Nama',['class'=>'col-sm-4 control-label']) }}
                         <div class="col-sm-8">
-                            {{ Form::text('nama',old('nama'),['class'=>'form-control','placeholder'=>'Masukkan Nama']) }}
+                            {{ Form::text('nama',old('nama'),['class'=>'form-control','placeholder'=>'Masukkan Nama','required']) }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -78,38 +78,38 @@
                     <div class="form-group">
                         {{ Form::label('kelamin','Jenis Kelamin',['class'=>'col-sm-4 control-label']) }}
                         <div class="col-sm-8">
-                            <label class="radio-inline">{{ Form::radio('kelamin','Pria',false) }} Pria</label>
+                            <label class="radio-inline">{{ Form::radio('kelamin','Pria',true) }} Pria</label>
                             <label class="radio-inline">{{ Form::radio('kelamin','Wanita',false) }} Wanita</label>
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('tempat_lahir','Tempat, Tanggal Lahir',['class'=>'col-sm-4 col-xs-12 control-label']) }}
                         <div class="col-sm-4 col-xs-6">
-                            {{ Form::text('tempat_lahir',old('tempat_lahir'),['class'=>'form-control','placeholder'=>'Masukkan Kota Lahir']) }}
+                            {{ Form::text('tempat_lahir',old('tempat_lahir'),['class'=>'form-control','placeholder'=>'Masukkan Kota Lahir','required']) }}
                         </div>
                         <div class="col-sm-4 col-xs-6">
-                            {{ Form::text('tgl_lahir',old('tgl_lahir'),['id'=>'tgl_lahir','class'=>'form-control','placeholder'=>'Klik Pilih Tanggal']) }}
+                            {{ Form::text('tgl_lahir',old('tgl_lahir'),['id'=>'tgl_lahir','class'=>'form-control','placeholder'=>'Klik Pilih Tanggal','required']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('telp','Telepon',['class'=>'col-sm-4 control-label']) }}
                         <div class="col-sm-8">
-                            {{ Form::text('telp',old('telp'),['class'=>'form-control','placeholder'=>'Masukkan No. Telepon']) }}
+                            {{ Form::text('telp',old('telp'),['class'=>'form-control','placeholder'=>'Masukkan No. Telepon','required']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('alamat','Alamat',['class'=>'col-sm-4 control-label']) }}
                         <div class="col-sm-8">
-                            {{ Form::text('alamat',old('alamat'),['class'=>'form-control','placeholder'=>'Masukkan Alamat']) }}
+                            {{ Form::text('alamat',old('alamat'),['class'=>'form-control','placeholder'=>'Masukkan Alamat','required']) }}
                         </div>
                     </div>
                     <div class="form-group">
                         {{ Form::label('rt','RT / RW',['class'=>'col-sm-4 col-xs-12 control-label']) }}
                         <div class="col-sm-3 col-xs-6">
-                            {{ Form::text('rt',old('rt'),['class'=>'form-control','placeholder'=>'Masukkan RT']) }}
+                            {{ Form::text('rt',old('rt'),['class'=>'form-control','placeholder'=>'Masukkan RT','required']) }}
                         </div>
                         <div class="col-sm-3 col-xs-6">
-                            {{ Form::text('rw',old('rw'),['id'=>'rw','class'=>'form-control','placeholder'=>'Masukkan RW']) }}
+                            {{ Form::text('rw',old('rw'),['id'=>'rw','class'=>'form-control','placeholder'=>'Masukkan RW','required']) }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -189,6 +189,12 @@ $(document).ready(function(){
         });
 
         $("#btnSimpan").click(function(e){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            })
+            $(".loading").show();
             var formdata = {
                 no_register: $("#no_register").val(),
                 nama: $("#nama").val(),
@@ -209,21 +215,14 @@ $(document).ready(function(){
                 donor_terakhir: $("#donor_terakhir").val()
             };
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr();
-                }
-            });
-
-            e.preventDefault();
+            console.log(formdata);
 
             $.ajax({
-                type: "POST",
+                type: "post",
                 url: "{{ url('donor/tambah') }}",
                 data: formdata,
-                dataType: "json",
                 success: function(data){
-                    $("#modalTambah").hide();
+                    $("#modalTambah").modal('hide');
                     ajaxLoad("{{ url('donor/list') }}",'data');
                 },
                 error: function(data){

@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 Route::get('donor', 'DonorController@read');
 Route::get('donor/list','DonorController@list');
+Route::post('donor/tambah','DonorController@prosesTambah');
 
 Route::get('golDarah/listSelect','GolDarahController@listSelect');
 

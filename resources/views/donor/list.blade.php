@@ -57,17 +57,19 @@
         <tbody>
             <?php $i = 1; ?>
             @foreach($donors as $donor)
-                <td>{{ $i++ }}</td>
-                <td class="text-left">{{ $donor->nama }}</td>
-                <td>{{ $donor->golDarah->nama }}</td>
-                <td>{{ $donor->kelamin }}</td>
-                <td>{{ $donor->telp }}</td>
-                <td>{{ $donor->total_donor }}</td>
-                <td>{{ $donor->donor_terakhir }}</td>
-                <td>
-                    <button title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</button>
-                    <button title="Hapus Data" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
-                </td>
+                <tr>
+                    <td>{{ $i++ }}</td>
+                    <td class="text-left">{{ $donor->nama }}</td>
+                    <td>{{ $donor->golDarah->nama }}</td>
+                    <td>{{ $donor->kelamin }}</td>
+                    <td>{{ $donor->telp }}</td>
+                    <td>{{ $donor->total_donor }}</td>
+                    <td>{{ $donor->donor_terakhir }}</td>
+                    <td>
+                        <button title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</button>
+                        <button title="Hapus Data" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
