@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return redirect('donor');
 });
+Route::get('donor', 'DonorController@read');
+Route::get('donor/list','DonorController@list');
+Route::post('donor/tambah','DonorController@prosesTambah');
+
+Route::get('golDarah/listSelect','GolDarahController@listSelect');
+
+Route::get('pekerjaan/listSelect','PekerjaanController@listSelect');
