@@ -20,3 +20,4 @@ Route::get('golDarah/listSelect','GolDarahController@listSelect');
 Route::get('pekerjaan/listSelect','PekerjaanController@listSelect');
 
 Route::controller('donor','DonorController');
+Route::controller('kegiatan','KegiatanController');

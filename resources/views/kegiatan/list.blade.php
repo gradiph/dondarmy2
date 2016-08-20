@@ -5,69 +5,60 @@
                 No
             </td>
             <td>
-                <a onclick="javascript:ajaxLoad('donor/list?field=nama&sort={{Session::get("donor_sort")=="asc"?"desc":"asc"}}','data')" href="#">
-                    Nama
+                <a onclick="javascript:ajaxLoad('kegiatan/list?field=tgl&sort={{Session::get("kegiatan_sort")=="asc"?"desc":"asc"}}','data')" href="#">
+                    Tanggal
                 </a>
                 <i style="font-size: 12px"
-                   class="glyphicon {{ Session::get('donor_field')=='nama'?(Session::get('donor_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+                   class="glyphicon {{ Session::get('kegiatan_field')=='tgl'?(Session::get('kegiatan_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </td>
             <td>
-                <a onclick="javascript:ajaxLoad('donor/list?field=gol_darah_id&sort={{Session::get("donor_sort")=="asc"?"desc":"asc"}}','data')" href="#">
-                    Gol. Darah
+                <a onclick="javascript:ajaxLoad('kegiatan/list?field=tempat&sort={{Session::get("kegiatan_sort")=="asc"?"desc":"asc"}}','data')" href="#">
+                    Tempat
                 </a>
                 <i style="font-size: 12px"
-                   class="glyphicon {{ Session::get('donor_field')=='gol_darah_id'?(Session::get('donor_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+                   class="glyphicon {{ Session::get('kegiatan_field')=='tempat'?(Session::get('kegiatan_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </td>
             <td>
-                <a onclick="javascript:ajaxLoad('donor/list?field=kelamin&sort={{Session::get("donor_sort")=="asc"?"desc":"asc"}}','data')" href="#">
-                    Kelamin
+                <a onclick="javascript:ajaxLoad('kegiatan/list?field=target_labu&sort={{Session::get("kegiatan_sort")=="asc"?"desc":"asc"}}','data')" href="#">
+                    Target Labu
                 </a>
                 <i style="font-size: 12px"
-                   class="glyphicon {{ Session::get('donor_field')=='kelamin'?(Session::get('donor_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+                   class="glyphicon {{ Session::get('kegiatan_field')=='target_labu'?(Session::get('kegiatan_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </td>
             <td>
-                <a onclick="javascript:ajaxLoad('donor/list?field=telp&sort={{Session::get("donor_sort")=="asc"?"desc":"asc"}}','data')" href="#">
-                    Telepon
+                <a onclick="javascript:ajaxLoad('kegiatan/list?field=hasil_labu&sort={{Session::get("kegiatan_sort")=="asc"?"desc":"asc"}}','data')" href="#">
+                    Hasil Labu
                 </a>
                 <i style="font-size: 12px"
-                   class="glyphicon {{ Session::get('donor_field')=='telp'?(Session::get('donor_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+                   class="glyphicon {{ Session::get('kegiatan_field')=='hasil_labu'?(Session::get('kegiatan_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </td>
             <td>
-                <a onclick="javascript:ajaxLoad('donor/list?field=total_donor&sort={{Session::get("donor_sort")=="asc"?"desc":"asc"}}','data')" href="#">
-                    Total Donor
+                <a onclick="javascript:ajaxLoad('kegiatan/list?field=laporan&sort={{Session::get("kegiatan_sort")=="asc"?"desc":"asc"}}','data')" href="#">
+                    Laporan
                 </a>
                 <i style="font-size: 12px"
-                   class="glyphicon {{ Session::get('donor_field')=='total_donor'?(Session::get('donor_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-                </i>
-            </td>
-            <td>
-                <a onclick="javascript:ajaxLoad('donor/list?field=donor_terakhir&sort={{Session::get("donor_sort")=="asc"?"desc":"asc"}}','data')" href="#">
-                    Donor Terakhir
-                </a>
-                <i style="font-size: 12px"
-                   class="glyphicon {{ Session::get('donor_field')=='donor_terakhir'?(Session::get('donor_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+                   class="glyphicon {{ Session::get('kegiatan_field')=='laporan'?(Session::get('kegiatan_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </td>
             <td>Aksi</td>
         </thead>
         <tbody>
             <?php $i = 1; ?>
-            @foreach($donors as $donor)
+            @foreach($kegiatans as $kegiatan)
                 <tr>
                     <td>{{ $i++ }}</td>
-                    <td class="text-left">{{ $donor->nama }}</td>
-                    <td>{{ $donor->golDarah->nama }}</td>
-                    <td>{{ $donor->kelamin }}</td>
-                    <td>{{ $donor->telp }}</td>
-                    <td>{{ $donor->total_donor }}</td>
-                    <td>{{ $donor->donor_terakhir }}</td>
+                    <td>{{ $kegiatan->tgl }}</td>
+                    <td>{{ $kegiatan->tempat }}</td>
+                    <td>{{ $kegiatan->target_labu }}</td>
+                    <td>{{ $kegiatan->hasil_labu }}</td>
+                    <td>{{ $kegiatan->path_laporan }}</td>
                     <td>
-                        <a href="{{ url('donor/ubah?id='.$donor->id) }}" title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</a>
-                        <a href="{{ url('donor/hapus?id='.$donor->id) }}" title="Hapus Data" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+                        <a href="{{ url('kegiatan/ubah?id='.$kegiatan->id) }}" title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</a>
+                        <a href="{{ url('kegiatan/hapus?id='.$kegiatan->id) }}" title="Hapus Data" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
                     </td>
                 </tr>
             @endforeach
@@ -75,7 +66,7 @@
     </table>
     <p>
         Total Data : {{ $total }}
-        <div class="pull-right">{!! str_replace('/?','?',$donors->render()) !!}</div>
+        <div class="pull-right">{!! str_replace('/?','?',$kegiatans->render()) !!}</div>
     </p>
 </div>
 <script>
