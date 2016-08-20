@@ -66,8 +66,8 @@
                     <td>{{ $donor->total_donor }}</td>
                     <td>{{ $donor->donor_terakhir }}</td>
                     <td>
-                        <a href="{{ url('donor/ubah?id='.$donor->id) }}" title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</a>
-                        <a href="{{ url('donor/hapus?id='.$donor->id) }}" title="Hapus Data" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Hapus</a>
+                        <button title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</button>
+                        <button title="Hapus Data" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
                     </td>
                 </tr>
             @endforeach
@@ -75,12 +75,6 @@
     </table>
     <p>
         Total Data : {{ $total }}
-        <div class="pull-right">{!! str_replace('/?','?',$donors->render()) !!}</div>
+        <div class="pull-right">{{ $donors->render() }}</div>
     </p>
 </div>
-<script>
-    $('.pagination a').on('click', function (event) {
-        event.preventDefault();
-        ajaxLoad($(this).attr('href'),'data');
-    });
-</script>

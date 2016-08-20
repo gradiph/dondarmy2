@@ -1,6 +1,5 @@
 <?php
 $golDarah = [];
-$golDarah += [null => "Pilih Gol. Darah"];
 foreach($golDarahs as $data)
 {
     $golDarah += [$data->id => $data->nama];

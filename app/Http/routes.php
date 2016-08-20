@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('donor');
+Route::get('', function () {
+    return view('donor.read');
 });
-Route::controller('donor','DonorController');
 
 Route::get('golDarah/listSelect','GolDarahController@listSelect');
 
 Route::get('pekerjaan/listSelect','PekerjaanController@listSelect');
+
+Route::controller('donor','DonorController');

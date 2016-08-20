@@ -48,5 +48,8 @@ class GolDarahsTableSeeder extends Seeder
         GolDarah::create([
             'nama' => 'O-',
         ]);
+        GolDarah::create([
+            'nama' => '-',
+        ]);
     }
 }

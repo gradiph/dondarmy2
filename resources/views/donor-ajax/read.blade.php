@@ -4,16 +4,10 @@
 
 <meta name="_token" content="{!! csrf_token() !!}" />
 <div class="container">
-    @if(Session::has('message'))
-        <div class="alert alert-success">
-            <p><strong>{{ Session::get('message') }}</strong></p>
-            <p><i>Klik untuk menutup</i></p>
-        </div>
-    @endif
     <h2>
         List Donor
         <div class="pull-right">
-            <a href="{{ url('donor/tambah') }}" id="btnTambah" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</a>
+            <button id="btnTambah" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
         </div>
     </h2>
     <hr>
@@ -50,7 +44,6 @@
                     <option value="10">O</option>
                     <option value="11">O+</option>
                     <option value="12">O-</option>
-                    <option value="13">-</option>
                 </select>
             </div>
         </div>
@@ -62,8 +55,14 @@
 <script>
 $(document).ready(function(){
     ajaxLoad("{{ url('donor/list') }}",'data');
-    $(".alert").click(function(){
-        $(this).hide('slow');
+    $("#new").hide();
+
+    $("#btnTambah").click(function(){
+        ajaxLoad("{{ url('donor/tambah') }}",'new');
+        $("#new").fadeIn('slow');
+        $("html, body").animate({
+            scrollTop: $("#new").offset().top
+        }, 800);
     });
 });
 </script>
