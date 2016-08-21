@@ -16,11 +16,19 @@ class UsersTableSeeder extends Seeder
             'username' => 'sadmin',
             'nama' => 'Super Admin',
             'password' => bcrypt('sadmin'),
+            'role' => 'SuperAdmin',
         ]);
         User::create([
             'username' => 'admin',
             'nama' => 'Admin',
             'password' => bcrypt('admin'),
+            'role' => 'Admin',
+        ]);
+        User::create([
+            'username' => 'panitia',
+            'nama' => 'Panitia',
+            'password' => bcrypt('panitia'),
+            'role' => 'Panitia',
         ]);
     }
 }

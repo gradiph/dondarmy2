@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('nama');
             $table->string('password');
+            $table->enum('role',['SuperAdmin','Admin','Panitia']);
             $table->rememberToken();
         });
     }
