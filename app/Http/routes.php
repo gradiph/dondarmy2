@@ -21,3 +21,4 @@ Route::get('pekerjaan/listSelect','PekerjaanController@listSelect');
 
 Route::controller('donor','DonorController');
 Route::controller('kegiatan','KegiatanController');
+Route::controller('user','UserController');
