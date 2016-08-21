@@ -13,7 +13,7 @@ class KegiatanTambahRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class KegiatanTambahRequest extends Request
     public function rules()
     {
         return [
-            //
+            'tgl' => 'required|date',
+            'tempat' => 'required',
+            'target_labu' => 'required|alpha_num',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'tgl.required' => 'Tanggal tidak boleh kosong.',
+            'tgl.date' => 'Format tanggal salah.',
+            'tempat.required' => 'Tempat tidak boleh kosong.',
+            'target_labu.required' => 'Target labu tidak boleh kosong.',
+            'target_labu.alpha_num' => 'Target labu harus angka',
         ];
     }
 }

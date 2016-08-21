@@ -12,7 +12,7 @@
 */
 
 Route::get('', function () {
-    return view('donor.read');
+    return Redirect::to('kegiatan');
 });
 
 Route::get('golDarah/listSelect','GolDarahController@listSelect');

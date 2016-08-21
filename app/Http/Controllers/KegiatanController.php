@@ -10,6 +10,7 @@ use App\Http\Requests\KegiatanUbahRequest;
 use Input;
 use Session;
 use Redirect;
+use Storage;
 
 class KegiatanController extends Controller
 {
@@ -50,7 +51,7 @@ class KegiatanController extends Controller
         $kegiatan = Kegiatan::find(Input::get('id'));
         return view('kegiatan.ubah')->with('kegiatan',$kegiatan);
     }
-    public function postUbah(KegiatanUbahRequest $valid)
+    public function postUbah(Request $request, KegiatanUbahRequest $valid)
     {
         if($valid)
         {
@@ -60,8 +61,21 @@ class KegiatanController extends Controller
             $kegiatan->tempat = Input::get('tempat');
             $kegiatan->target_labu = Input::get('target_labu');
             $kegiatan->hasil_labu = Input::get('hasil_labu');
-            $kegiatan->path_laporan = Input::get('path_laporan');
 
+            if($request->hasFile('path_laporan') && $request->file('path_laporan')->isValid())
+            {
+                $file = $request->file('path_laporan');
+                Storage::put(
+                    'laporan/'.$file->getName(),
+                    file_get_contents($file->getRealPath())
+                );
+                $kegiatan->path_laporan = $file;
+//                Storage::put(
+//                    'laporan/'.$kegiatan->id.'-'.$kegiatan->tgl.'.pdf',
+//                    file_get_contents($request->file('path_laporan')->getRealPath())
+//                );
+//                $kegiatan->path_laporan = 'laporan/'.$kegiatan->id.'-'.$kegiatan->tgl.'.pdf';
+            }
             $kegiatan->save();
 
             return Redirect::to('kegiatan')->with('message','Data kegiatan tanggal '.Input::get('tgl').' berhasil diubah.');

@@ -11,7 +11,7 @@
                     Ubah Kegiatan
                 </div>
                 <div class="panel-body">
-                    {{ Form::open(['url'=>url('kegiatan/ubah'),'method'=>'post','id'=>'frmKegiatan','class'=>'form-horizontal']) }}
+                    {{ Form::open(['url'=>url('kegiatan/ubah'),'method'=>'post','id'=>'frmKegiatan','class'=>'form-horizontal','files'=>'true']) }}
                         {{ Form::hidden('id',$kegiatan->id) }}
                         @if(count($errors) > 0)
                             <div id='error' class="alert alert-danger">
