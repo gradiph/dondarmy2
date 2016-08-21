@@ -17,23 +17,6 @@
         </div>
     </h2>
     <hr>
-    <div class="row">
-        <div class="col-lg-4 form-group">
-            <div class="input-group">
-                <input class="form-control" id="search" value="{{ Session::get('kegiatan_search') }}"
-                       onkeyup="if ((event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 13 || event.keyCode == 8 || event.keyCode == 46) ajaxLoad('{{url('kegiatan/list')}}?ok=1&search='+this.value,'data')"
-                       placeholder="Cari Nama ..."
-                       type="text"
-                       autofocus>
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-default"
-                            onclick="ajaxLoad('{{url('kegiatan/list')}}?ok=1&search='+$('#search').val())"><i
-                                class="glyphicon glyphicon-search"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="data"></div>
     <hr>
 </div>
