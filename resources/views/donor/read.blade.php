@@ -28,7 +28,7 @@
                        autofocus>
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default"
-                            onclick="ajaxLoad('{{url('donor/list')}}?ok=1&search='+$('#search').val())"><i
+                            onclick="ajaxLoad('{{url('donor/list')}}?ok=1&search='+$('#search').val(),'data')"><i
                                 class="glyphicon glyphicon-search"></i>
                     </button>
                 </div>
