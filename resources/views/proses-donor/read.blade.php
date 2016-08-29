@@ -19,21 +19,29 @@ foreach ($kegiatans as $data)
         </div>
     @endif
     <h2>
-        Proses Donor
+        Proses Donor <span id="tgl"></span>
     </h2>
     <hr>
     <div class="row">
         <div class="col-lg-6">
-            <div class="input-group">
-                {{ Form::select(
-                    'proses_kegiatan',
-                    $kegiatan,
-                    Session::get('proses_kegiatan'),
-                    [
-                        'class' => 'form-control',
-                        'id' => 'proses_kegiatan'
-                    ]
-                ) }}
+            <div class="row">
+                <div class="col-lg-4" style="line-height:33px; letter-spacing:1px; text-align:right;">Tanggal Kegiatan</div>
+                <div class="col-lg-4 form-group">
+                    {{ Form::select(
+                        'proses_kegiatan',
+                        $kegiatan,
+                        Session::get('proses_kegiatan'),
+                        [
+                            'class' => 'form-control',
+                            'id' => 'proses_kegiatan'
+                        ]
+                    ) }}
+                </div>
+<!--
+                <div class="col-lg-1">
+                    <button id="btnRefresh" class="btn btn-danger">Refresh List</button>
+                </div>
+-->
             </div>
             <div class="col-lg-12" id="antrian"></div>
         </div>
@@ -52,6 +60,9 @@ foreach ($kegiatans as $data)
                         </button>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4">
+                <a href="{{ url('proses-donor/tambahdonor') }}" class="btn btn-block btn-danger"><i class="glyphicon glyphicon-plus"></i> Tambah Donor</a>
             </div>
             <div class="col-lg-12" id="donor"></div>
         </div>

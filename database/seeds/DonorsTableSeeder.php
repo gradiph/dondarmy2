@@ -13,7 +13,7 @@ class DonorsTableSeeder extends Seeder
     public function run()
     {
         Donor::create([
-            'no_register' => '3274031505950017',
+            'no_register' => '3274031505950',
             'nama' => 'Gradiyanto Putera Husein',
             'gol_darah_id' => '2',
             'kelamin' => 'Pria',

@@ -39,7 +39,7 @@ class DonorTambahRequest extends Request
             'kode_pos' => 'alpha_num',
             'pekerjaan_id' => 'required|alpha_num',
             'penghargaan' => '',
-            'total_donor' => 'number',
+            'total_donor' => 'alpha_num',
             'donor_terakhir' => 'date',
         ];
     }
@@ -62,7 +62,7 @@ class DonorTambahRequest extends Request
             'kode_pos.alpha_num' => 'Kode pos harus angka.',
             'pekerjaan_id.required' => 'Pekerjaan tidak boleh kosong.',
             'pekerjaan_id.alpha_num' => 'Pekerjaan salah.',
-            'total_donor.number' => 'Total donor harus angka.',
+            'total_donor.alpha_num' => 'Total donor harus angka.',
             'donor_terakhir.date' => 'Format donor terakhir salah.',
         ];
     }

@@ -12,7 +12,7 @@
 */
 
 Route::get('', function () {
-    return Redirect::to('kegiatan');
+    return Redirect::to('proses-donor');
 });
 
 Route::get('golDarah/listSelect','GolDarahController@listSelect');
@@ -23,3 +23,4 @@ Route::controller('donor','DonorController');
 Route::controller('kegiatan','KegiatanController');
 Route::controller('user','UserController');
 Route::controller('proses-donor','ProsesDonorController');
+Route::controller('semoga','SemogaController');

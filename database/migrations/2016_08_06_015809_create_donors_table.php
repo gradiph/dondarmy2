@@ -14,7 +14,7 @@ class CreateDonorsTable extends Migration
     {
         Schema::create('donors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_register',16)->unique();
+            $table->string('no_register',13)->unique();
             $table->string('nama');
             $table->integer('gol_darah_id')->unsigned()->nullable();
             $table->enum('kelamin',['Pria','Wanita']);
@@ -27,7 +27,7 @@ class CreateDonorsTable extends Migration
             $table->string('kelurahan',30)->nullable();
             $table->string('kecamatan',30)->nullable();
             $table->string('kode_pos',5)->nullable();
-            $table->integer('pekerjaan_id')->unsigned();
+            $table->integer('pekerjaan_id')->unsigned()->nullable();
             $table->enum('penghargaan',['10','25','50','75','100'])->nullable();
             $table->integer('total_donor')->nullable();
             $table->date('donor_terakhir')->nullable();

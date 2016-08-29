@@ -59,15 +59,15 @@ class DonorController extends Controller
                 'telp' => Input::get('telp'),
                 'pekerjaan_id' => Input::get('pekerjaan_id'),
             ];
-            if (Input::get('alamat') != "") $data += Input::get('alamat');
-            if (Input::get('rt') != "") $data += Input::get('rt');
-            if (Input::get('rw') != "") $data += Input::get('rw');
-            if (Input::get('kelurahan') != "") $data += Input::get('kelurahan');
-            if (Input::get('kecamatan') != "") $data += Input::get('kecamatan');
-            if (Input::get('kode_pos') != "") $data += Input::get('kode_pos');
-            if (Input::get('penghargaan') != "") $data += Input::get('penghargaan');
-            if (Input::get('total_donor') != "") $data += Input::get('total_donor');
-            if (Input::get('donor_terakhir') != "") $data += Input::get('donor_terakhir');
+//            if (Input::get('alamat') != "") $data += ['alamat' => Input::get('alamat')];
+//            if (Input::get('rt') != "") $data += Input::get('rt');
+//            if (Input::get('rw') != "") $data += Input::get('rw');
+//            if (Input::get('kelurahan') != "") $data += Input::get('kelurahan');
+//            if (Input::get('kecamatan') != "") $data += Input::get('kecamatan');
+//            if (Input::get('kode_pos') != "") $data += Input::get('kode_pos');
+//            if (Input::get('penghargaan') != "") $data += Input::get('penghargaan');
+//            if (Input::get('total_donor') != "") $data += Input::get('total_donor');
+//            if (Input::get('donor_terakhir') != "") $data += Input::get('donor_terakhir');
             Donor::create($data);
             return Redirect::to('donor')->with('message',"Data ".Input::get('nama')." berhasil diinputkan!");
         }

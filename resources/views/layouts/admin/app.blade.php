@@ -10,6 +10,7 @@
     {{ Html::script(asset('js/jquery-2.2.3.min.js')) }}
     {{ Html::script(asset('js/bootstrap.min.js')) }}
     {{ Html::script(asset('js/jquery-ui-1.12.0.custom/jquery-ui.min.js')) }}
+    {{ Html::script(asset('js/jQuery-printPage-plugin-1.0.1/jquery.printPage.js')) }}
 	<style>
 	.loading {
 		background: lightgoldenrodyellow url('{{asset('images/processing.gif')}}') no-repeat center 65%;
