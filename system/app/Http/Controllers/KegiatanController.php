@@ -23,7 +23,11 @@ class KegiatanController extends Controller
         Session::put('kegiatan_field', Input::has('field') ? Input::get('field') : (Session::has('kegiatan_field') ? Session::get('kegiatan_field') : 'tgl'));
         Session::put('kegiatan_sort', Input::has('sort') ? Input::get('sort') : (Session::has('kegiatan_sort') ? Session::get('kegiatan_sort') : 'desc'));
         $kegiatans = Kegiatan::orderBy(Session::get('kegiatan_field'), Session::get('kegiatan_sort'))
+            ->withCount(['detailKegiatan' => function($query){
+                $query->where('terima', 'Terima');
+            }])
             ->paginate(6);
+
         $total = Kegiatan::count();
         return view('kegiatan.list')
             ->with('kegiatans',$kegiatans)

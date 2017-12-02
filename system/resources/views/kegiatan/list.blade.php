@@ -54,7 +54,7 @@
                     <td>{{ $kegiatan->tgl }}</td>
                     <td>{{ $kegiatan->tempat }}</td>
                     <td>{{ $kegiatan->target_labu }}</td>
-                    <td>{{ $kegiatan->hasil_labu }}</td>
+                    <td>{{ $kegiatan->detail_kegiatan_count }}</td>
                     <td><a href="#download" onclick="javascript:ajaxLoad('{{ url('admin/kegiatan/downloadlaporan?id='.$kegiatan->id) }}')" class="link">{{ $kegiatan->path_laporan }}</a></td>
                     <td>
                         <a href="{{ url('admin/kegiatan/ubah?id='.$kegiatan->id) }}" title="Ubah Data" class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i> Ubah</a>
